@@ -52,10 +52,3 @@ services:
       timeout: 3s
       interval: 1s
 
-  redis:
-    image: redis:5
-    tty: true
-    networks:
-      - backend
-    labels:
-      - "traefik.enable=false"
