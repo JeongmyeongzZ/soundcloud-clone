@@ -17,9 +17,8 @@ RUN docker-php-ext-install zip tokenizer pcntl json exif bcmath pdo_mysql
 
 RUN docker-php-ext-enable xdebug
 
-RUN echo -e "max_execution_time = 0" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "xdebug.mode = debug" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "xdebug.start_with_request = yes" >> "$PHP_INI_DIR/php.ini-development" \
+RUN echo "xdebug.mode=debug" >> "$PHP_INI_DIR/php.ini-development" \
+    && echo "xdebug.start_with_request=yes" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.remote_connect_back=off" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.client_host=host.docker.internal" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.client_port=9005" >> "$PHP_INI_DIR/php.ini-development" \
