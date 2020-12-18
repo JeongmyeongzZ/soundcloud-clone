@@ -13,64 +13,46 @@ use Illuminate\Database\Eloquent\Model;
 abstract class EloquentRepository
 {
     /**
-     * The repository model.
-     *
      * @var Model
      */
     protected Model $model;
 
     /**
-     * The query builder.
-     *
      * @var Builder
      */
     protected Builder $query;
 
     /**
-     * Alias for the query limit.
-     *
      * @var int|null
      */
     protected ?int $limit;
 
     /**
-     * Array of related models to eager load.
-     *
      * @var array
      */
     protected array $with = [];
 
     /**
-     * Array of one or more where clause parameters.
-     *
      * @var array
      */
     protected array $wheres = [];
 
     /**
-     * Array of one or more where in clause parameters.
-     *
      * @var array
      */
     protected array $whereIns = [];
 
     /**
-     * Array of one or more ORDER BY column/value pairs.
-     *
      * @var array
      */
     protected array $orderBys = [];
 
     /**
-     * Array of scope methods to call on the model.
-     *
      * @var array
      */
     protected array $scopes = [];
 
     /**
-     * Get all the model records in the database.
-     *
      * @return Collection
      */
     public function all(): Collection
@@ -85,8 +67,6 @@ abstract class EloquentRepository
     }
 
     /**
-     * Count the number of specified model records in the database.
-     *
      * @return int
      */
     public function count(): int
@@ -95,8 +75,6 @@ abstract class EloquentRepository
     }
 
     /**
-     * Get the first specified model record from the database.
-     *
      * @return Model
      */
     public function first(): Model
@@ -111,13 +89,12 @@ abstract class EloquentRepository
     }
 
     /**
-     * @param array $params
+     * @param Model $model
+     * @param array $attributes
      */
-    public function save(array $params): void
+    public function save(Model $model, array $attributes): void
     {
-        $this->unsetClauses();
-
-        $this->newQuery()->save($params);
+        $model->fill($attributes)->save();
     }
 
     /**
