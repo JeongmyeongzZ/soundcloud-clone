@@ -90,11 +90,10 @@ abstract class EloquentRepository
 
     /**
      * @param Model $model
-     * @param array $attributes
      */
-    public function save(Model $model, array $attributes): void
+    public function save(Model $model): void
     {
-        $model->fill($attributes)->save();
+        $model->save();
     }
 
     /**
