@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domains\Track\Interfaces\web;
+namespace App\Domains\Track\Interfaces\Web;
 
 use App\Http\Controllers\Controller;
 

@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Domains\Track\Track;
+use App\Domains\Like\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TrackFactory extends Factory
+class LikeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Track::class;
+    protected $model = Like::class;
 
     /**
      * Define the model's default state.
@@ -24,8 +24,8 @@ class TrackFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->title,
-            'artwork_url' => $this->faker->imageUrl(),
+            'likeable_id' => $this->faker->randomNumber(),
+            'likeable_type' => $this->faker->word,
         ];
     }
 }
