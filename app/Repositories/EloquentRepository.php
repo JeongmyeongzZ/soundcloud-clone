@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-//todo interface to repository
 abstract class EloquentRepository
 {
     /**
@@ -52,6 +51,15 @@ abstract class EloquentRepository
      * @var array
      */
     protected array $scopes = [];
+
+    /**
+     * EloquentRepository constructor.
+     * @param Model $model
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
 
     /**
      * @return Collection
