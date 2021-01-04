@@ -4,7 +4,7 @@ FROM php:7.4-apache
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-RUN apt update && apt install git libpng-dev zlib1g-dev libzip-dev libjpeg-dev libxml2-dev -yqq
+RUN apt-get update && apt-get install git libpng-dev zlib1g-dev libzip-dev libjpeg-dev libxml2-dev -yqq
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
