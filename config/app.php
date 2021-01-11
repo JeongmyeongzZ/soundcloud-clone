@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        \App\Domains\Track\Providers\TrackServiceProvider::class,
+        App\Domains\Track\Providers\TrackServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -8,6 +8,7 @@ use App\Domains\Track\Interfaces\Web\Requests\SaveTrackRequest;
 use App\Domains\Track\Requests\SaveTrackRequest as SaveTrackRequestObject;
 use App\Domains\Track\Services\TrackService;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use ReflectionException;
 
 class TrackController extends Controller
@@ -26,14 +27,17 @@ class TrackController extends Controller
         $this->service = $service;
     }
 
-
     /**
      * @param SaveTrackRequest $request
+     * @return JsonResponse
      * @throws ReflectionException
      */
-    public function store(SaveTrackRequest $request)
+    public function store(SaveTrackRequest $request): JsonResponse
     {
-        $a = $this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class);
-        $this->service->save($this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class));
+        $track = $this->service->save($this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class));
+
+        return response()->json([
+            'id' => $track->id,
+        ]);
     }
 }
