@@ -20,7 +20,7 @@ trait MapHttpRequests
      * @return mixed|object
      * @throws ReflectionException
      */
-    public function createFromLaravelRequest(Request $request, string $className): object
+    public function mapHttpRequestToRequestObject(Request $request, string $className): object
     {
         try {
             $mapper = new JsonMapper();
