@@ -32,7 +32,7 @@ services:
       - "traefik.port=80"
 
   mysql:
-    image: mysql:5.7
+    image: mariadb:10.4.3
     environment:
       TZ: ${MYSQL_TIMEZONE:-Asia/Seoul}
       MYSQL_DATABASE: ${DB_DATABASE}
