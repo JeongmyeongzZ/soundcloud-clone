@@ -11,17 +11,27 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-RUN pecl install xdebug
+#RUN pecl install xdebug
+RUN pecl install xdebug-2.9.2
 
 RUN docker-php-ext-install zip tokenizer pcntl json exif bcmath pdo_mysql
 
 RUN docker-php-ext-enable xdebug
 
-RUN echo "xdebug.mode=debug" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "xdebug.start_with_request=yes" >> "$PHP_INI_DIR/php.ini-development" \
+#RUN echo "xdebug.mode=debug" >> "$PHP_INI_DIR/php.ini-development" \
+#    && echo "xdebug.start_with_request=yes" >> "$PHP_INI_DIR/php.ini-development" \
+#    && echo "xdebug.remote_connect_back=off" >> "$PHP_INI_DIR/php.ini-development" \
+#    && echo "xdebug.client_host=host.docker.internal" >> "$PHP_INI_DIR/php.ini-development" \
+#    && echo "xdebug.client_port=9005" >> "$PHP_INI_DIR/php.ini-development" \
+#    && echo "xdebug.idekey=PHPSTORM" >> "$PHP_INI_DIR/php.ini-development"
+#RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+RUN echo -e "max_execution_time=0" >> "$PHP_INI_DIR/php.ini-development" \
+    && echo "xdebug.remote_enable=1" >> "$PHP_INI_DIR/php.ini-development" \
+    && echo "xdebug.remote_autostart=1" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.remote_connect_back=off" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "xdebug.client_host=host.docker.internal" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "xdebug.client_port=9005" >> "$PHP_INI_DIR/php.ini-development" \
+    && echo "xdebug.remote_host=host.docker.internal" >> "$PHP_INI_DIR/php.ini-development" \
+    && echo "xdebug.remote_port=9005" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.idekey=PHPSTORM" >> "$PHP_INI_DIR/php.ini-development"
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 

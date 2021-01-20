@@ -30,6 +30,8 @@ services:
       - "traefik.docker.network=${TRAEFIK_NETWORK:-traefik_default}"
       - "traefik.enable=true"
       - "traefik.port=80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # for mac m1
 
   mysql:
     image: mariadb:10.4.3
