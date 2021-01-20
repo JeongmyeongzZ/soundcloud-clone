@@ -13,5 +13,5 @@ interface TrackRepository
      * @param Track $track
      * @return Track
      */
-    public function create(Track $track);
+    public function create(Track $track): Track;
 }

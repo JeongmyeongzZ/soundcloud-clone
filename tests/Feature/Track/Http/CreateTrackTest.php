@@ -17,16 +17,20 @@ class CreateTrackTest extends TestCase
      */
     public function create_track()
     {
-        $user = User::create();
+        /**
+         * @var User $user
+         */
+        $user = User::factory()->createOne();
 
-        $response = $this->postJson(
-            route('tracks.create'),
-            [
-                'userId' => $user->id,
-                'title' => $this->faker->title,
-                'artworkUrl' => $this->faker->imageUrl(),
-            ]
-        );
+        $response = $this->actingAs($user)
+            ->postJson(
+                route('tracks.create'),
+                [
+                    'userId' => $user->id,
+                    'title' => $this->faker->title,
+                    'artworkUrl' => $this->faker->imageUrl(),
+                ]
+            );
 
         $response->assertCreated();
 

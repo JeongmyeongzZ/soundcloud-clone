@@ -9,6 +9,7 @@ use App\Domains\Track\Requests\SaveTrackRequest as SaveTrackRequestObject;
 use App\Domains\Track\Services\TrackService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use ReflectionException;
 
 class TrackController extends Controller
@@ -37,7 +38,9 @@ class TrackController extends Controller
         $track = $this->service->save($this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class));
 
         return response()->json([
-            'id' => $track->id,
-        ]);
+            'data' => [
+                'id' => $track->id,
+            ]
+        ], Response::HTTP_CREATED);
     }
 }
