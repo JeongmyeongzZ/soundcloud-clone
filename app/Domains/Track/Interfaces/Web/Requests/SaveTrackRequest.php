@@ -14,7 +14,6 @@ class SaveTrackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'userId' => 'required|numeric|min:1',
             'title' => 'required|string|max:60',
             'artworkUrl' => 'required|string|url',
         ];

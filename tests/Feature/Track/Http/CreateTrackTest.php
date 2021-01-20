@@ -26,7 +26,6 @@ class CreateTrackTest extends TestCase
             ->postJson(
                 route('tracks.create'),
                 [
-                    'userId' => $user->id,
                     'title' => $this->faker->title,
                     'artworkUrl' => $this->faker->imageUrl(),
                 ]
