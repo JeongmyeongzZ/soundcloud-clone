@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Domains\Track\Track;
+use App\Domains\Track\Models\Track;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

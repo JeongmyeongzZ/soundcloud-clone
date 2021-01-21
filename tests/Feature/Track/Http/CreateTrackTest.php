@@ -5,12 +5,13 @@ namespace Tests\Feature\Track\Http;
 
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CreateTrackTest extends TestCase
 {
-    use WithFaker;
+    use WithFaker, RefreshDatabase;
 
     /**
      * @test

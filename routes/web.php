@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-foreach (glob(base_path('routes/web/*.php')) as $file) {
-    require $file;
-}
+Route::middleware('auth')->group(function () {
+    foreach (glob(base_path('routes/web/*.php')) as $file) {
+        require $file;
+    }
+});
