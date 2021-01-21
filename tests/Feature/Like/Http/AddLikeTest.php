@@ -32,6 +32,6 @@ class AddLikeTest extends TestCase
         $response = $this->actingAs($user)
             ->postJson(route('likes.like-track', $track->id));
 
-        $response->assertNoContent();
+        $response->assertOk();
     }
 }

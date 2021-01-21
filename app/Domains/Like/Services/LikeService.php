@@ -26,7 +26,11 @@ class LikeService
         $this->repository = $repository;
     }
 
-    public function add(AddLikeRequest $request)
+    /**
+     * @param AddLikeRequest $request
+     * @return void
+     */
+    public function add(AddLikeRequest $request): void
     {
         /**
          * @var User $user

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domains\Like\Interfaces\Web\Controllers;
 
 use App\Domains\Like\Interfaces\Web\Requests\AddLikeRequest;
+use App\Domains\Like\Requests\AddLikeRequest as AddLikeRequestObject;
 use App\Domains\Like\Services\LikeService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -32,7 +33,7 @@ class LikeController extends Controller
      */
     public function store(AddLikeRequest $request): Response
     {
-        $this->service->add($this->mapHttpRequestToRequestObject($request, AddLikeRequest::class));
+        $this->service->add($this->mapHttpRequestToRequestObject($request, AddLikeRequestObject::class));
 
         return response()->noContent(Response::HTTP_OK);
     }

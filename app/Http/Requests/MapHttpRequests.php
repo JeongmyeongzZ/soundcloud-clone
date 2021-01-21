@@ -20,14 +20,14 @@ trait MapHttpRequests
      * @return mixed|object
      * @throws ReflectionException
      */
-    public function mapHttpRequestToRequestObject(Request $request, string $className): object
+    public function mapHttpRequestToRequestObject(Request $request, string $className)
     {
         try {
             $mapper = new JsonMapper();
             $mapper->bIgnoreVisibility = true;
 
             return $mapper->map(
-                new ParameterBag($request->all()),
+                new ParameterBag($request->validated()),
                 (new ReflectionClass($className))->newInstanceWithoutConstructor()
             );
         } catch (JsonMapper_Exception $exception) {

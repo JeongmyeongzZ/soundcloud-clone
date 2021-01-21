@@ -4,7 +4,7 @@ namespace App\Domains\Track\Models;
 
 use App\Domains\Like\Models\Like;
 use App\Models\User;
-use App\Traits\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

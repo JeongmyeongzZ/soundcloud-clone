@@ -17,7 +17,7 @@ class CreateTracksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('유저 ID');
             $table->string('title', 60)->comment('제목');
-            $table->string('artwork_url', 60)->comment('썸네일 이미지 경로');
+            $table->string('artwork_url')->comment('썸네일 이미지 경로');
             $table->timestamps();
         });
     }

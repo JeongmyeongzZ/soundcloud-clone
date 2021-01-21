@@ -4,10 +4,8 @@ namespace App\Models;
 
 use App\Domains\Like\Models\Like;
 use App\Domains\Track\Models\Track;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -71,9 +69,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function likes(): MorphMany
+    public function likes(): HasMany
     {
-        return $this->morphMany(Like::class, 'likeable');
+        return $this->hasMany(Like::class);
     }
 
     public function tracks(): HasMany
