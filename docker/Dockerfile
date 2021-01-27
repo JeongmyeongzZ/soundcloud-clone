@@ -27,7 +27,6 @@ RUN docker-php-ext-enable xdebug
 #RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 RUN echo -e "max_execution_time=0" >> "$PHP_INI_DIR/php.ini-development" \
-    && echo "memory_limit=256M" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.remote_enable=1" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.remote_autostart=1" >> "$PHP_INI_DIR/php.ini-development" \
     && echo "xdebug.remote_connect_back=off" >> "$PHP_INI_DIR/php.ini-development" \
