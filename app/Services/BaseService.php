@@ -46,7 +46,7 @@ abstract class BaseService
 
     /**
      * @return Model
-     * @param $id
+     * @param string|int $id
      */
     public function find($id): Model
     {
@@ -65,7 +65,7 @@ abstract class BaseService
     /**
      * @return bool|null
      * @throws Exception
-     * @param $id
+     * @param string|int $id
      */
     public function delete($id): ?bool
     {

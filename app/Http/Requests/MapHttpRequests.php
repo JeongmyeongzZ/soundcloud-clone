@@ -27,7 +27,7 @@ trait MapHttpRequests
             $mapper->bIgnoreVisibility = true;
 
             return $mapper->map(
-                new ParameterBag($request->validated()),
+                new ParameterBag($request->all()),
                 (new ReflectionClass($className))->newInstanceWithoutConstructor()
             );
         } catch (JsonMapper_Exception $exception) {

@@ -35,8 +35,6 @@ class TrackController extends Controller
      */
     public function store(SaveTrackRequest $request): JsonResponse
     {
-        $request->merge(['userId' => auth()->user()->getAuthIdentifier()]);
-
         $track = $this->service->save($this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class));
 
         return response()->json([

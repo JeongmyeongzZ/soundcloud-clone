@@ -135,7 +135,7 @@ abstract class EloquentRepository
 
     /**
      * @return Model
-     * @param $id
+     * @param int|string $id
      */
     public function find($id): Model
     {
@@ -148,9 +148,9 @@ abstract class EloquentRepository
 
     /**
      * @return Builder|Model|object|null
-     * @param $column
+     * @param string $column
      * @param array $columns
-     * @param $value
+     * @param mixed $value
      */
     public function findBy(string $column, $value, array $columns = ['*'])
     {
@@ -164,7 +164,7 @@ abstract class EloquentRepository
     /**
      * @return bool|null
      * @throws Exception
-     * @param $id
+     * @param string|int $id
      */
     public function delete($id): ?bool
     {
@@ -245,7 +245,7 @@ abstract class EloquentRepository
 
     /**
      * @return $this
-     * @param $relations
+     * @param mixed $relations
      */
     public function with($relations): self
     {

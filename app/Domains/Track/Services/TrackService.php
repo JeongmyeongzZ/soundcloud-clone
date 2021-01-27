@@ -32,7 +32,7 @@ class TrackService
     {
         $track = new Track();
         $track->artwork_url = $request->getArtworkUrl();
-        $track->user_id = $request->getUserId();
+        $track->user_id = auth()->user()->getAuthIdentifier();
         $track->title = $request->getTitle();
 
         return $this->repository->create($track);
