@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use ReflectionException;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class TrackController extends Controller
 {
@@ -35,7 +36,10 @@ class TrackController extends Controller
      */
     public function store(SaveTrackRequest $request): JsonResponse
     {
-        $track = $this->service->save($this->mapHttpRequestToRequestObject($request, SaveTrackRequestObject::class));
+        $track = $this->service->save($this->mapHttpRequestToRequestObject(
+            new ParameterBag($request->all()),
+            SaveTrackRequestObject::class
+        ));
 
         return response()->json([
             'data' => [

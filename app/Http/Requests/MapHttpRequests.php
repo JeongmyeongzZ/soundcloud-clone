@@ -15,19 +15,19 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 trait MapHttpRequests
 {
     /**
-     * @param Request $request
+     * @param ParameterBag $request
      * @param string $className
      * @return mixed|object
      * @throws ReflectionException
      */
-    public function mapHttpRequestToRequestObject(Request $request, string $className)
+    public function mapHttpRequestToRequestObject(ParameterBag $request, string $className)
     {
         try {
             $mapper = new JsonMapper();
             $mapper->bIgnoreVisibility = true;
 
             return $mapper->map(
-                new ParameterBag($request->all()),
+                $request,
                 (new ReflectionClass($className))->newInstanceWithoutConstructor()
             );
         } catch (JsonMapper_Exception $exception) {
