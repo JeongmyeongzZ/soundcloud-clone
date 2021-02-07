@@ -26,7 +26,7 @@ services:
       - backend
       - traefik
     labels:
-      - "traefik.frontend.rule=Host:${TRAEFIK_DOMAIN:-triview.test}"
+      - "traefik.frontend.rule=Host:${TRAEFIK_DOMAIN:-soundcloud.test}"
       - "traefik.docker.network=${TRAEFIK_NETWORK:-traefik_default}"
       - "traefik.enable=true"
       - "traefik.port=80"
