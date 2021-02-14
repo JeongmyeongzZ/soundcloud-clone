@@ -36,7 +36,7 @@ class {{ class }} extends FormRequest
      * Map with custom request object class.
      *
      * @return mixed|object
-     * @throw ReflectionException
+     * @throws ReflectionException
      */
     public function toRequestObject()
     {
