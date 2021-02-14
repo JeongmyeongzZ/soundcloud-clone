@@ -36,10 +36,7 @@ class TrackController extends Controller
      */
     public function store(SaveTrackRequest $request): JsonResponse
     {
-        $track = $this->service->save($this->mapHttpRequestToRequestObject(
-            new ParameterBag($request->all()),
-            SaveTrackRequestObject::class
-        ));
+        $track = $this->service->save($request->toRequestObject());
 
         return response()->json([
             'data' => [

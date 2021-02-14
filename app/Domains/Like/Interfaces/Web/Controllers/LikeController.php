@@ -9,6 +9,7 @@ use App\Domains\Like\Requests\AddLikeRequest as AddLikeRequestObject;
 use App\Domains\Like\Services\LikeService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use ReflectionException;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class LikeController extends Controller
@@ -30,14 +31,11 @@ class LikeController extends Controller
     /**
      * @param AddLikeRequest $request
      * @return Response
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function store(AddLikeRequest $request): Response
     {
-        $this->service->add($this->mapHttpRequestToRequestObject(
-            new ParameterBag($request->route()->parameters()),
-            AddLikeRequestObject::class
-        ));
+        $this->service->add($request->toRequestObject());
 
         return response()->noContent(Response::HTTP_OK);
     }

@@ -3,10 +3,14 @@
 namespace App\Domains\Like\Interfaces\Web\Requests;
 
 use App\Domains\Track\Models\Track;
+use App\Http\Requests\MapHttpRequest;
 use Illuminate\Foundation\Http\FormRequest;
+use ReflectionException;
 
 class AddLikeRequest extends FormRequest
 {
+    use MapHttpRequest;
+
     /**
      * @inheritDoc
      */
@@ -27,5 +31,21 @@ class AddLikeRequest extends FormRequest
         return [
             'trackId' => "required|exists:${trackClass},id",
         ];
+    }
+
+    /**
+     * Map with custom request object class.
+     *
+     * @return mixed|object
+     * @throws ReflectionException
+     */
+    public function toRequestObject()
+    {
+        $this->json()->set('trackId', $this->route()->parameter('trackId'));
+
+        return $this->mapHttpRequestToRequestObject(
+            $this->json(),
+            \App\Domains\Like\Requests\AddLikeRequest::class
+        );
     }
 }

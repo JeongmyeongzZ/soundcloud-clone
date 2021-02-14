@@ -34,13 +34,13 @@ class {{ class }} extends FormRequest
 
     /**
      * Map with custom request object class.
+     * Change class to request object class name
      *
      * @return mixed|object
      * @throws ReflectionException
      */
     public function toRequestObject()
     {
-        // change class to request object class name
         return $this->mapHttpRequestToRequestObject($this->json(), );
     }
 }
