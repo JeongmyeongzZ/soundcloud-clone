@@ -12,7 +12,7 @@ use ReflectionException;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
-trait MapHttpRequests
+trait MapHttpRequest
 {
     /**
      * @param ParameterBag $request

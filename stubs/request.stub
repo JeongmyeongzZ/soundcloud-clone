@@ -1,0 +1,46 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Requests\MapHttpRequest;
+use Illuminate\Foundation\Http\FormRequest;
+use ReflectionException;
+
+class {{ class }} extends FormRequest
+{
+    use MapHttpRequest;
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return false;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * Map with custom request object class.
+     *
+     * @return mixed|object
+     * @throw ReflectionException
+     */
+    public function toRequestObject()
+    {
+        // change class to request object class name
+        return $this->mapHttpRequestToRequestObject($this->json(), );
+    }
+}
