@@ -7,6 +7,7 @@ namespace App\Domains\Track\Interfaces\Web\Controllers;
 use App\Domains\Track\Interfaces\Web\Requests\SaveTrackRequest;
 use App\Domains\Track\Requests\SaveTrackRequest as SaveTrackRequestObject;
 use App\Domains\Track\Services\TrackService;
+use App\Domains\Track\Transformers\SaveTrackTransformer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -36,12 +37,9 @@ class TrackController extends Controller
      */
     public function store(SaveTrackRequest $request): JsonResponse
     {
-        $track = $this->service->save($request->toRequestObject());
-
-        return response()->json([
-            'data' => [
-                'id' => $track->id,
-            ]
-        ], Response::HTTP_CREATED);
+        return response()->json(
+            fractal($this->service->save($request->toRequestObject()), SaveTrackTransformer::class)->toArray(),
+            Response::HTTP_CREATED
+        );
     }
 }
