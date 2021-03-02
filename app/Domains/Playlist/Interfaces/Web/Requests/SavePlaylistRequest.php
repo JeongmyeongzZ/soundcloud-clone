@@ -22,8 +22,8 @@ class SavePlaylistRequest extends FormRequest
             'artworkUrl' => 'required|string|url',
             'genre' => 'required|string',
             'description' => 'required|string',
-            'is_private' => 'required|bool',
-            'release_date' => 'required|date',
+            'isPrivate' => 'required|bool',
+            'releaseDate' => 'required|date',
         ];
     }
 

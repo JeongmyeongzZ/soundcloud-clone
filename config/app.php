@@ -167,6 +167,7 @@ return [
          */
         App\Domains\Track\Providers\TrackServiceProvider::class,
         App\Domains\Like\Providers\LikeServiceProvider::class,
+        App\Domains\Playlist\Providers\PlaylistServiceProvider::class,
 
         /*
          * Application Service Providers...
