@@ -25,14 +25,10 @@ class CreateTrackTest extends TestCase
 
         $response = $this->actingAs($user)
             ->postJson(
-                route('playlists.create'),
+                route('tracks.create'),
                 [
                     'title' => $this->faker->title,
                     'artworkUrl' => $this->faker->imageUrl(),
-                    'genre' => $this->faker->word,
-                    'description' => $this->faker->text(50),
-                    'isPrivate' => $this->faker->boolean,
-                    'releaseDate' => $this->faker->date(),
                 ]
             );
 

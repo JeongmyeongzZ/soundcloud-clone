@@ -17,7 +17,7 @@ class AddPlaylistTest extends TestCase
     /**
      * @test
      */
-    public function add_Playlist()
+    public function add_playlist()
     {
         /**
          * @var User $user
@@ -26,13 +26,23 @@ class AddPlaylistTest extends TestCase
 
         $response = $this->actingAs($user)
             ->postJson(
-                route('Playlists.Playlist-track'),
+                route('playlists.create'),
                 [
                     'title' => $this->faker->title,
                     'artworkUrl' => $this->faker->imageUrl(),
+                    'genre' => $this->faker->word,
+                    'description' => $this->faker->text(50),
+                    'isPrivate' => $this->faker->boolean,
+                    'releaseDate' => $this->faker->date(),
                 ]
             );
 
-        $response->assertOk();
+        $response->assertCreated();
+
+        $response->assertJsonStructure([
+           'data' => [
+               'id',
+           ],
+       ]);
     }
 }
