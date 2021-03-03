@@ -36,7 +36,7 @@ class PlaylistController extends Controller
     public function store(SavePlaylistRequest $request): JsonResponse
     {
         return response()->json(
-            fractal($this->service->save($request->toRequestObject()), SavePlaylistTransformer::class)->toArray(),
+            fractal($this->service->save($request->toRequestObject()), new SavePlaylistTransformer())->toArray(),
             Response::HTTP_CREATED
         );
     }

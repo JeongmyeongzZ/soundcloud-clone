@@ -38,7 +38,7 @@ class TrackController extends Controller
     public function store(SaveTrackRequest $request): JsonResponse
     {
         return response()->json(
-            fractal($this->service->save($request->toRequestObject()), SaveTrackTransformer::class)->toArray(),
+            fractal($this->service->save($request->toRequestObject()), new SaveTrackTransformer())->toArray(),
             Response::HTTP_CREATED
         );
     }

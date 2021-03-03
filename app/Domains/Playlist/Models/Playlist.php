@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $genre 장르
  * @property string $artwork_url 썸네일 이미지 경로
  * @property string $description 썸네일 이미지 경로
- * @property int $is_private 공개 여부
+ * @property bool $is_private 공개 여부
  * @property string $release_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -53,6 +53,10 @@ class Playlist extends Model
         'description',
         'is_private',
         'release_date',
+    ];
+
+    protected $casts = [
+        'is_private' => 'boolean',
     ];
 
     public function user(): BelongsTo

@@ -4,7 +4,6 @@
 namespace Tests\Feature\Playlist\Http;
 
 
-use App\Domains\Track\Models\Track;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

@@ -10,7 +10,7 @@ class SavePlaylistRequest
     private string $artworkUrl;
     private string $genre;
     private string $description;
-    private string $isPrivate;
+    private bool $isPrivate;
     private string $releaseDate;
 
     /**
@@ -19,7 +19,7 @@ class SavePlaylistRequest
      * @param  string  $artworkUrl
      * @param  string  $genre
      * @param  string  $description
-     * @param  string  $isPrivate
+     * @param  bool  $isPrivate
      * @param  string  $releaseDate
      */
     public function __construct(
@@ -27,7 +27,7 @@ class SavePlaylistRequest
         string $artworkUrl,
         string $genre,
         string $description,
-        string $isPrivate,
+        bool $isPrivate,
         string $releaseDate
     ) {
         $this->title = $title;
@@ -55,9 +55,9 @@ class SavePlaylistRequest
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getIsPrivate(): string
+    public function getIsPrivate(): bool
     {
         return $this->isPrivate;
     }

@@ -66,6 +66,10 @@
             "@php artisan migrate:refresh",
             "@php artisan db:seed",
             "@php artisan ide-helper:model -WR"
+        ],
+        "test": [
+            "@php artisan test",
+            "./vendor/bin/phpstan analyse --memory-limit=-1"
         ]
     }
 }
