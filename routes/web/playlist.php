@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Domains\Playlist\Interfaces\Web\Controllers\PlaylistController;
+use App\Domains\Playlist\Interfaces\Web\Controllers\SavePlaylistController;
 
-Route::post('/playlists', [PlaylistController::class, 'store'])->name('playlists.create');
+Route::post('/playlists', SavePlaylistController::class)->name('playlists.create');
 

@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use ReflectionException;
 
-class PlaylistController extends Controller
+class SavePlaylistController extends Controller
 {
     /**
      * @var PlaylistService
@@ -20,7 +20,7 @@ class PlaylistController extends Controller
     private PlaylistService $service;
 
     /**
-     * PlaylistController constructor.
+     * SavePlaylistController constructor.
      * @param PlaylistService $service
      */
     public function __construct(PlaylistService $service)
@@ -33,7 +33,7 @@ class PlaylistController extends Controller
      * @return JsonResponse
      * @throws ReflectionException
      */
-    public function store(SavePlaylistRequest $request): JsonResponse
+    public function __invoke(SavePlaylistRequest $request): JsonResponse
     {
         return response()->json(
             fractal($this->service->save($request->toRequestObject()), new SavePlaylistTransformer())->toArray(),
