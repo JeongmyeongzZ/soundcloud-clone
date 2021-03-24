@@ -1,6 +1,6 @@
 <?php
 
-use App\Domains\Track\Interfaces\Web\Controllers\TrackController;
+use App\Domains\Track\Interfaces\Web\Controllers\SaveTrackController;
 
-Route::post('/tracks', [TrackController::class, 'store'])->name('tracks.create');
+Route::post('/tracks', SaveTrackController::class)->name('tracks.create');
 

@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace App\Domains\Track\Interfaces\Web\Controllers;
 
 use App\Domains\Track\Interfaces\Web\Requests\SaveTrackRequest;
-use App\Domains\Track\Requests\SaveTrackRequest as SaveTrackRequestObject;
 use App\Domains\Track\Services\TrackService;
 use App\Domains\Track\Transformers\SaveTrackTransformer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use ReflectionException;
-use Symfony\Component\HttpFoundation\ParameterBag;
 
-class TrackController extends Controller
+class SaveTrackController extends Controller
 {
     /**
      * @var TrackService
@@ -35,7 +33,7 @@ class TrackController extends Controller
      * @return JsonResponse
      * @throws ReflectionException
      */
-    public function store(SaveTrackRequest $request): JsonResponse
+    public function __invoke(SaveTrackRequest $request): JsonResponse
     {
         return response()->json(
             fractal($this->service->save($request->toRequestObject()), new SaveTrackTransformer())->toArray(),

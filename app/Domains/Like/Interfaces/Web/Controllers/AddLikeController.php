@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace App\Domains\Like\Interfaces\Web\Controllers;
 
 use App\Domains\Like\Interfaces\Web\Requests\AddLikeRequest;
-use App\Domains\Like\Requests\AddLikeRequest as AddLikeRequestObject;
 use App\Domains\Like\Services\LikeService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use ReflectionException;
-use Symfony\Component\HttpFoundation\ParameterBag;
 
-class LikeController extends Controller
+class AddLikeController extends Controller
 {
     /**
      * @var LikeService
@@ -33,7 +31,7 @@ class LikeController extends Controller
      * @return Response
      * @throws ReflectionException
      */
-    public function store(AddLikeRequest $request): Response
+    public function __invoke(AddLikeRequest $request): Response
     {
         $this->service->add($request->toRequestObject());
 

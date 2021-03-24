@@ -1,5 +1,5 @@
 <?php
 
-use App\Domains\Like\Interfaces\Web\Controllers\LikeController;
+use App\Domains\Like\Interfaces\Web\Controllers\AddLikeController;
 
-Route::post('tracks/{trackId}/like', [LikeController::class, 'store'])->name('likes.like-track');
+Route::post('tracks/{trackId}/like', AddLikeController::class)->name('likes.like-track');
